@@ -35,10 +35,6 @@ hr {
     background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5), transparent);
 }
 
-p, a, button {
-    font-size: 14px;
-}
-
 a {
     color: var(--mainColor);
 }
