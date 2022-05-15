@@ -1,0 +1,123 @@
+/* Root */
+:root {
+    --mainColor: #a13bae;
+    --darkColor: #151515;
+    --lightColor: #f2f2f2;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Radio Canada', sans-serif;
+    padding: 1rem 0  .5rem 0;
+}
+
+h1, img {
+    text-align: center;
+}
+
+hr {
+    width: 100%;
+    border: 0;
+    height: .01rem;
+    margin: 1rem 0;
+    background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5), transparent);
+}
+
+p, a, button {
+    font-size: 14px;
+}
+
+a {
+    color: var(--mainColor);
+}
+
+nav, nav ul {
+    display: flex;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    height: 2.5rem;
+    padding: .5rem 1rem;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-bottom: .015rem solid rgba(0, 0, 0, .2);
+    margin-bottom: 1rem;
+}
+
+.logo {
+    font-family: 'Pacifico', cursive;
+    color:  var(--mainColor);
+}
+
+nav ul {
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    align-self: flex-start;
+    padding: 0 .5rem;
+    transition: 400ms ease-out;
+    cursor: pointer;
+}
+
+nav ul li a {
+    color: var(--darkColor);
+}
+
+nav ul li:hover, nav ul li a:hover {
+    color: var(--mainColor);
+    transition: 400ms ease-in;
+}
+
+.light_mode {
+    display: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem .95rem .95rem .95rem;
+}
+
+footer {
+    width: 100%;
+    height: 5rem;
+    padding: .5rem 1rem;
+    justify-content: space-between;
+    background-color: var(--lightColor);
+    border-top: .015rem solid rgba(0, 0, 0, .2);
+}
+
+/* Les tableaux */
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+tr:nth-child(even){background-color: #f2f2f2;}
+  
+tr:hover {background-color: #ddd;}
+  
+th {
+padding-top: 12px;
+padding-bottom: 12px;
+text-align: left;
+background-color: #04AA6D;
+color: white;
+}
