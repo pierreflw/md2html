@@ -51,8 +51,8 @@ jobs:
               id: build-image
               uses: docker/build-push-action@v5
               with:
-                  context: .
-                  file: ./Dockerfile
+                  context: ./md2html
+                  file: ./md2html/Dockerfile
                   push: true
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
