@@ -18,6 +18,7 @@ jobs:
         permissions:
             contents: read
             packages: write
+        environment: PROD
 
         steps:
             - name: Clone du repository
@@ -47,7 +48,7 @@ jobs:
 
             - name: Construction de l'image
               id: build-image
-              uses: docker/build-push-action@v5
+              uses: docker/on@v5
               with:
                   context: .
                   file: ./Dockerfile
@@ -56,3 +57,12 @@ jobs:
                   labels: ${{ steps.meta.outputs.labels }}
                   cache-from: type=gha
                   cache-to: type=gha,mode=max
+
+            - name: Déployer le stack via Portainer
+              uses: cssnr/portainer-stack-deploy-action@v1
+              with:
+                url: ${{ secrets.PORTAINER_URL }}
+                token: ${{ secrets.PORTAINER_TOKEN }}
+                name: md2html
+                # file: on pourrait spécifier un compose file si besoin, sinon il réutilise celui du stack existant
+                prune: true
