@@ -18,7 +18,7 @@ jobs:
         permissions:
             contents: read
             packages: write
-        environment: PROD
+        environment: 
 
         steps:
             - name: Clone du repository
@@ -48,7 +48,7 @@ jobs:
 
             - name: Construction de l'image
               id: build-image
-              uses: docker/on@v5
+              uses: docker/build-push-action@v5
               with:
                   context: .
                   file: ./Dockerfile
