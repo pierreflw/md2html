@@ -2,7 +2,7 @@ name: Construction de l'image Docker
 
 on:
     push:
-        branches: master
+        branches: main
         tags: v*
     release:
         types: [published]
