@@ -58,11 +58,16 @@ jobs:
                   cache-from: type=gha
                   cache-to: type=gha,mode=max
 
-            - name: Déployer le stack via Portainer
-              uses: cssnr/portainer-stack-deploy-action@v1
+            - name: Déploiement sur le VPS
+              uses: appleboy/ssh-action@v1.0.0
               with:
-                url: ${{ secrets.PORTAINER_URL }}
-                token: ${{ secrets.PORTAINER_TOKEN }}
-                name: md2html
-                # file: on pourrait spécifier un compose file si besoin, sinon il réutilise celui du stack existant
-                prune: true
+                  host: 89.213.175.199
+                  username: root
+                  key: ${{ secrets.SSH_PRIVATE_KEY }}
+                  script: |
+                    docker pull ghcr.io/${{ env.IMAGE_NAME }}:latest
+                    docker stop deploy-container || true
+                    docker rm deploy-container || true
+                    docker run -d --name deploy-container -p 80:80 ghcr.io/${{ env.IMAGE_NAME }}:latest
+    
+              
