@@ -45,6 +45,7 @@ jobs:
                     type=ref,event=tag
                     type=ref,event=pr
                     type=sha
+                    type=raw,value=latest,enable={{is_default_branch}}
 
             - name: Construction de l'image
               id: build-image
@@ -65,7 +66,7 @@ jobs:
                   username: root
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   script: |
-                    docker pull ghcr.io/${{ env.IMAGE_NAME }}:latest
+                    docker pull ghcr.io/${{ env.IMAGE_NAME }}:latestdocker 
                     docker stop deploy-container || true
                     docker rm deploy-container || true
                     docker run -d --name deploy-container -p 80:80 ghcr.io/${{ env.IMAGE_NAME }}:latest
